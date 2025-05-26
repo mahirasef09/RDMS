@@ -48,20 +48,20 @@ SELECT * FROM rangers;
 SELECT * FROM species;
 SELECT * FROM sightings;
 
---Prob 1: Register a new ranger with provided data with name = 'Derek Fox' and region = 'Coastal Plains'
+--Problem 1: Register a new ranger with provided data with name = 'Derek Fox' and region = 'Coastal Plains'
 INSERT INTO rangers (name, region)
 VALUES ('Derek Fox', 'Coastal Plains');
 
---Prob 2: Count unique species ever sighted.
+--Problem 2: Count unique species ever sighted.
 SELECT COUNT(DISTINCT species_id) AS unique_species_count
 FROM sightings;
 
---Prob 3: Find all sightings where the location includes "Pass".
+--Problem 3: Find all sightings where the location includes "Pass".
 SELECT *
 FROM sightings
 WHERE location LIKE '%Pass%';
 
---Prob 4:List each ranger's name and their total number of sightings.
+--Problem 4:List each ranger's name and their total number of sightings.
 SELECT 
     ra.name AS ranger_name,
     COUNT(si.sighting_id) AS total_sightings
@@ -69,14 +69,14 @@ FROM rangers AS ra
 LEFT JOIN sightings AS si ON ra.ranger_id = si.ranger_id
 GROUP BY ra.name
 
---Prob 5: List species that have never been sighted.
+--Problem 5: List species that have never been sighted.
 SELECT 
     sp.common_name
 FROM species AS sp
 LEFT JOIN sightings AS si ON sp.species_id = si.species_id
 WHERE si.sighting_id IS NULL;
 
---Prob 6: Show the most recent 2 sightings.
+--Problem 6: Show the most recent 2 sightings.
 SELECT 
     sp.common_name,
     si.sighting_time,
@@ -87,12 +87,12 @@ JOIN rangers ra ON si.ranger_id = ra.ranger_id
 ORDER BY si.sighting_time DESC
 LIMIT 2;
 
---Prob 7: Update all species discovered before year 1800 to have status 'Historic'.
+--Problem 7: Update all species discovered before year 1800 to have status 'Historic'.
 UPDATE species
 SET conservation_status = 'Historic'
 WHERE EXTRACT(YEAR FROM discovery_date) < 1800;
 
---Prob 8: Label each sighting's time of day as 'Morning', 'Afternoon', or 'Evening'.
+--Problem 8: Label each sighting's time of day as 'Morning', 'Afternoon', or 'Evening'.
 SELECT 
     si.sighting_id,
     CASE 
@@ -102,7 +102,7 @@ SELECT
     END AS time_of_day
 FROM sightings AS si;
 
---Prob 9: Delete rangers who have never sighted any species
+--Problem 9: Delete rangers who have never sighted any species
 DELETE FROM rangers AS ra
 WHERE NOT EXISTS (
     SELECT *
