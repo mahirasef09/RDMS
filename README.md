@@ -72,6 +72,23 @@ OFFSET 10;</pre>
 
 *Skips the first 10 rows and returns the rest.*
 
+# **Q9: Explain the GROUP BY clause and its role in aggregation operations.**
+The GROUP BY clause groups rows that have the same values in specified columns, allowing aggregate functions such as COUNT(), SUM(), AVG(), MAX(), and MIN() to be applied to each group separately.
+
+### <ins>Example 1:</ins>
+<pre>SELECT department, AVG(salary) AS average_salary
+FROM employees
+GROUP BY department;</pre> 
+
+*The query groups employees by department. Then it calculates the average salary for each department using AVG().*
+
+### <ins>Example 2:</ins>
+<pre>SELECT customer_id, SUM(order_total) AS total_spent
+FROM orders
+GROUP BY customer_id;</pre> 
+
+*The query groups orders by customer_id. Then it calculates the total amount spent by each customer using SUM().*
+
 
 
 
