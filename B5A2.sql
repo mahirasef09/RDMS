@@ -16,21 +16,11 @@ CREATE TABLE species (
 
 CREATE TABLE sightings (
     sighting_id SERIAL PRIMARY KEY,
-    species_id INT NOT NULL,
-    ranger_id INT NOT NULL,
+    species_id INT NOT NULL REFERENCES species(species_id) ON DELETE CASCADE,
+    ranger_id INT NOT NULL REFERENCES rangers(ranger_id) ON DELETE CASCADE,
     location VARCHAR(150) NOT NULL,
     sighting_time TIMESTAMP,
-    notes TEXT,
-
-    CONSTRAINT fk_ranger
-        FOREIGN KEY (ranger_id)
-        REFERENCES rangers(ranger_id)
-        ON DELETE CASCADE,
-
-    CONSTRAINT fk_species
-        FOREIGN KEY (species_id)
-        REFERENCES species(species_id)
-        ON DELETE CASCADE
+    notes TEXT
 );
 
 INSERT INTO rangers (name, region) VALUES
@@ -100,7 +90,7 @@ LIMIT 2;
 --Prob 7: Update all species discovered before year 1800 to have status 'Historic'.
 UPDATE species
 SET conservation_status = 'Historic'
-WHERE discovery_date < '1800-01-01';
+WHERE EXTRACT(YEAR FROM discovery_date) < 1800;
 
 --Prob 8: Label each sighting's time of day as 'Morning', 'Afternoon', or 'Evening'.
 SELECT 
