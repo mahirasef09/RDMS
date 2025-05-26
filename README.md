@@ -1,4 +1,4 @@
-# **Q3: Explain the Primary Key and Foreign Key concepts in PostgreSQL?**
+# **Q3: Explain the Primary Key and Foreign Key concepts in PostgreSQL.**
 ## **Primary Key:**
 A Primary Key is a field or a set of fields in a table that ensures each record can be uniquely distinguished from all others.
 
@@ -40,6 +40,17 @@ CHAR(n) stores exactly n characters, padding with spaces if shorter, and is idea
     name VARCHAR(50),
     country_code CHAR(2)
 );</pre>
+
+# **Q5: Explain the purpose of the WHERE clause in a SELECT statement.**
+## **WHERE clause in a SELECT statement:**
+The WHERE clause in a SELECT statement filters the results by applying a condition, so only the rows that satisfy that condition are included in the output.
+
+*Purpose: To retrieve specific rows from a table instead of fetching all data.*
+*As a condition: Can use operators like =, >, <, !=, LIKE, IN, BETWEEN etc. and logical operators: AND, OR, NOT.*
+
+### <ins>Example:</ins>
+<pre>SELECT * FROM products
+WHERE price > 500;</pre> 
 
 
 
