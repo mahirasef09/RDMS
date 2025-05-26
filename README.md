@@ -45,12 +45,32 @@ CHAR(n) stores exactly n characters, padding with spaces if shorter, and is idea
 ## **WHERE clause in a SELECT statement:**
 The WHERE clause in a SELECT statement filters the results by applying a condition, so only the rows that satisfy that condition are included in the output.
 
-*Purpose: To retrieve specific rows from a table instead of fetching all data.*
-*As a condition: Can use operators like =, >, <, !=, LIKE, IN, BETWEEN etc. and logical operators: AND, OR, NOT.*
+*Purpose: To retrieve specific rows from a table instead of fetching all data. Can be used operators like =, >, <, !=, LIKE, IN, BETWEEN etc. and logical operators: AND, OR, NOT To retrieve specific rows.*
 
 ### <ins>Example:</ins>
 <pre>SELECT * FROM products
 WHERE price > 500;</pre> 
+
+# **Q6: What are the LIMIT and OFFSET clauses used for?**
+The LIMIT and OFFSET clauses in PostgreSQL are used to manage how many rows a query returns and where to start retrieving them from.
+
+## **LIMIT:**
+Specifies the maximum number of rows to return.
+
+### <ins>Example:</ins>
+<pre>SELECT * FROM products
+LIMIT 5;</pre> 
+
+*Returns only the first 5 rows from the products table.*
+
+## **OFFSET:**
+Skips a specified number of rows before starting to return results.
+
+### <ins>Example:</ins>
+<pre>SELECT * FROM products
+OFFSET 10;</pre> 
+
+*Skips the first 10 rows and returns the rest.*
 
 
 
